@@ -85,8 +85,6 @@ namespace WindowsFormsApplication1
         {
             if (comboBox1.SelectedIndex != 1)
             {
-                propertyGrid1.SelectedObject = comboBox1.SelectedItem;
-
                 Spieler spieler = comboBox1.SelectedItem as Spieler;
                 nameTxt.Text = spieler.Name;
                 vornameTxt.Text = spieler.Vorname;
