@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             LoadSpielerData();
+            comboBox1.SelectedIndex = 0;
         }
         private void LoadSpielerData()
         {
@@ -26,10 +27,10 @@ namespace WindowsFormsApplication1
             foreach (XmlNode node in doc.DocumentElement)
             {
                 string spieler = node["Spieler"].InnerText;
-                
+
                 foreach (XmlNode childNode in node.ChildNodes)
                 {
-                    
+
                     string name = childNode["Name"].InnerText;
                     string vorname = childNode["Vorname"].InnerText;
                     string position = childNode["Position"].InnerText;
@@ -43,7 +44,7 @@ namespace WindowsFormsApplication1
                     string nation = childNode["Nation"].InnerText;
                     string internationl = childNode["Laenderspiele"].InnerText;
                     comboBox1.Items.Add(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
-                    
+
                 }
 
 
@@ -72,27 +73,35 @@ namespace WindowsFormsApplication1
 
         private void toFirstBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "XML|*xml";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                XmlDocument xDoc = new XmlDocument();
-                xDoc.Load(ofd.FileName);
-                MessageBox.Show(xDoc.SelectSingleNode("SpielerListe/Spieler").InnerText);
-            }
+
         }
 
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex != 1)
+            if (comboBox1.SelectedIndex != 1)
             {
                 propertyGrid1.SelectedObject = comboBox1.SelectedItem;
-                object spieler = comboBox1.SelectedIndex;
+
+                Spieler spieler = comboBox1.SelectedItem as Spieler;
+                nameTxt.Text = spieler.Name;
+                vornameTxt.Text = spieler.Vorname;
+                positionTxt.Text = spieler.Position;
+                nummerTxt.Text = spieler.Nummer.ToString();
+                sinceTxt.Text = spieler.Seit;
+                bornTxt.Text = spieler.Bday;
+                sizeTxt.Text = spieler.Size.ToString();
+                weightTxt.Text = spieler.Weight.ToString();
+                gamesGoalsTxt.Text = spieler.Games + "/" + spieler.Goals;
+                nationTxt.Text = spieler.Nation;
+                internationalTxt.Text = spieler.International;
+
+
+
                 Application.DoEvents();
             }
         }
@@ -101,5 +110,6 @@ namespace WindowsFormsApplication1
         {
 
         }
+
     }
 }

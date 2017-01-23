@@ -57,7 +57,6 @@
             this.positionTxt = new System.Windows.Forms.TextBox();
             this.vornameTxt = new System.Windows.Forms.TextBox();
             this.imageBmp = new System.Windows.Forms.PictureBox();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -302,21 +301,12 @@
             this.imageBmp.TabIndex = 28;
             this.imageBmp.TabStop = false;
             // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Location = new System.Drawing.Point(414, 75);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(262, 395);
-            this.propertyGrid1.TabIndex = 29;
-            this.propertyGrid1.Click += new System.EventHandler(this.propertyGrid1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1180, 569);
-            this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.imageBmp);
             this.Controls.Add(this.vornameTxt);
             this.Controls.Add(this.positionTxt);
@@ -383,7 +373,6 @@
         private System.Windows.Forms.TextBox positionTxt;
         private System.Windows.Forms.TextBox vornameTxt;
         private System.Windows.Forms.PictureBox imageBmp;
-        private System.Windows.Forms.PropertyGrid propertyGrid1;
     }
 }
 
