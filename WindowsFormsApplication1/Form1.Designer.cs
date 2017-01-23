@@ -57,6 +57,7 @@
             this.positionTxt = new System.Windows.Forms.TextBox();
             this.vornameTxt = new System.Windows.Forms.TextBox();
             this.imageBmp = new System.Windows.Forms.PictureBox();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@
             this.toFirstBtn.Size = new System.Drawing.Size(75, 41);
             this.toFirstBtn.TabIndex = 0;
             this.toFirstBtn.UseVisualStyleBackColor = false;
+            this.toFirstBtn.Click += new System.EventHandler(this.toFirstBtn_Click);
             // 
             // previousBtn
             // 
@@ -212,6 +214,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(475, 21);
             this.comboBox1.TabIndex = 15;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // nameTxt
             // 
@@ -219,6 +222,7 @@
             this.nameTxt.Name = "nameTxt";
             this.nameTxt.Size = new System.Drawing.Size(233, 20);
             this.nameTxt.TabIndex = 16;
+            this.nameTxt.TextChanged += new System.EventHandler(this.nameTxt_TextChanged);
             // 
             // internationalTxt
             // 
@@ -298,12 +302,21 @@
             this.imageBmp.TabIndex = 28;
             this.imageBmp.TabStop = false;
             // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(414, 75);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(262, 395);
+            this.propertyGrid1.TabIndex = 29;
+            this.propertyGrid1.Click += new System.EventHandler(this.propertyGrid1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1180, 569);
+            this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.imageBmp);
             this.Controls.Add(this.vornameTxt);
             this.Controls.Add(this.positionTxt);
@@ -370,6 +383,7 @@
         private System.Windows.Forms.TextBox positionTxt;
         private System.Windows.Forms.TextBox vornameTxt;
         private System.Windows.Forms.PictureBox imageBmp;
+        private System.Windows.Forms.PropertyGrid propertyGrid1;
     }
 }
 
