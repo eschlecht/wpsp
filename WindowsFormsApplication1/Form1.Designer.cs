@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.toFirstBtn = new System.Windows.Forms.Button();
+            this.previousBtn = new System.Windows.Forms.Button();
+            this.nextBtn = new System.Windows.Forms.Button();
+            this.lastBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,48 +60,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // toFirstBtn
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(40, 486);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 41);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
+            this.toFirstBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.toFirstBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toFirstBtn.BackgroundImage")));
+            this.toFirstBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.toFirstBtn.Location = new System.Drawing.Point(40, 486);
+            this.toFirstBtn.Name = "toFirstBtn";
+            this.toFirstBtn.Size = new System.Drawing.Size(75, 41);
+            this.toFirstBtn.TabIndex = 0;
+            this.toFirstBtn.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // previousBtn
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Window;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(121, 485);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 42);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
+            this.previousBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.previousBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousBtn.BackgroundImage")));
+            this.previousBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousBtn.Location = new System.Drawing.Point(121, 485);
+            this.previousBtn.Name = "previousBtn";
+            this.previousBtn.Size = new System.Drawing.Size(75, 42);
+            this.previousBtn.TabIndex = 1;
+            this.previousBtn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // nextBtn
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.Window;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(214, 485);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 41);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
+            this.nextBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.nextBtn.Image = ((System.Drawing.Image)(resources.GetObject("nextBtn.Image")));
+            this.nextBtn.Location = new System.Drawing.Point(214, 485);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(75, 41);
+            this.nextBtn.TabIndex = 2;
+            this.nextBtn.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // lastBtn
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.Window;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(295, 485);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 41);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = false;
+            this.lastBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.lastBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.lastBtn.Image = ((System.Drawing.Image)(resources.GetObject("lastBtn.Image")));
+            this.lastBtn.Location = new System.Drawing.Point(295, 485);
+            this.lastBtn.Name = "lastBtn";
+            this.lastBtn.Size = new System.Drawing.Size(75, 41);
+            this.lastBtn.TabIndex = 3;
+            this.lastBtn.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -328,10 +328,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lastBtn);
+            this.Controls.Add(this.nextBtn);
+            this.Controls.Add(this.previousBtn);
+            this.Controls.Add(this.toFirstBtn);
             this.Name = "Form1";
             this.Text = "Meine Fussball-Mannschaft";
             ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).EndInit();
@@ -342,10 +342,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button toFirstBtn;
+        private System.Windows.Forms.Button previousBtn;
+        private System.Windows.Forms.Button nextBtn;
+        private System.Windows.Forms.Button lastBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
