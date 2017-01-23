@@ -56,15 +56,15 @@
             this.nummerTxt = new System.Windows.Forms.TextBox();
             this.positionTxt = new System.Windows.Forms.TextBox();
             this.vornameTxt = new System.Windows.Forms.TextBox();
-            this.imageBmp = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).BeginInit();
+            this.image = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
             // 
             // toFirstBtn
             // 
             this.toFirstBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.toFirstBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toFirstBtn.BackgroundImage")));
             this.toFirstBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.toFirstBtn.Image = ((System.Drawing.Image)(resources.GetObject("toFirstBtn.Image")));
             this.toFirstBtn.Location = new System.Drawing.Point(40, 486);
             this.toFirstBtn.Name = "toFirstBtn";
             this.toFirstBtn.Size = new System.Drawing.Size(75, 41);
@@ -75,13 +75,14 @@
             // previousBtn
             // 
             this.previousBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.previousBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousBtn.BackgroundImage")));
             this.previousBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.previousBtn.Image = ((System.Drawing.Image)(resources.GetObject("previousBtn.Image")));
             this.previousBtn.Location = new System.Drawing.Point(121, 485);
             this.previousBtn.Name = "previousBtn";
             this.previousBtn.Size = new System.Drawing.Size(75, 42);
             this.previousBtn.TabIndex = 1;
             this.previousBtn.UseVisualStyleBackColor = false;
+            this.previousBtn.Click += new System.EventHandler(this.previousBtn_Click);
             // 
             // nextBtn
             // 
@@ -92,6 +93,7 @@
             this.nextBtn.Size = new System.Drawing.Size(75, 41);
             this.nextBtn.TabIndex = 2;
             this.nextBtn.UseVisualStyleBackColor = false;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // lastBtn
             // 
@@ -103,6 +105,7 @@
             this.lastBtn.Size = new System.Drawing.Size(75, 41);
             this.lastBtn.TabIndex = 3;
             this.lastBtn.UseVisualStyleBackColor = false;
+            this.lastBtn.Click += new System.EventHandler(this.lastBtn_Click);
             // 
             // label1
             // 
@@ -293,13 +296,14 @@
             this.vornameTxt.Size = new System.Drawing.Size(233, 20);
             this.vornameTxt.TabIndex = 27;
             // 
-            // imageBmp
+            // image
             // 
-            this.imageBmp.Location = new System.Drawing.Point(40, 75);
-            this.imageBmp.Name = "imageBmp";
-            this.imageBmp.Size = new System.Drawing.Size(330, 395);
-            this.imageBmp.TabIndex = 28;
-            this.imageBmp.TabStop = false;
+            this.image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.image.Location = new System.Drawing.Point(40, 75);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(330, 395);
+            this.image.TabIndex = 28;
+            this.image.TabStop = false;
             // 
             // Form1
             // 
@@ -307,7 +311,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1180, 569);
-            this.Controls.Add(this.imageBmp);
+            this.Controls.Add(this.image);
             this.Controls.Add(this.vornameTxt);
             this.Controls.Add(this.positionTxt);
             this.Controls.Add(this.nummerTxt);
@@ -337,7 +341,7 @@
             this.Controls.Add(this.toFirstBtn);
             this.Name = "Form1";
             this.Text = "Meine Fussball-Mannschaft";
-            ((System.ComponentModel.ISupportInitialize)(this.imageBmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +376,7 @@
         private System.Windows.Forms.TextBox nummerTxt;
         private System.Windows.Forms.TextBox positionTxt;
         private System.Windows.Forms.TextBox vornameTxt;
-        private System.Windows.Forms.PictureBox imageBmp;
+        private System.Windows.Forms.PictureBox image;
     }
 }
 
