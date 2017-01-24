@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             LoadSpielerData();
             comboBox1.SelectedIndex = 0;
+            ChangeButtonEnabled(comboBox1.SelectedIndex);
         }
         private void LoadSpielerData()
         {
@@ -47,6 +48,39 @@ namespace WindowsFormsApplication1
                 }
 
 
+            }
+        }
+
+        private void ChangeButtonEnabled(int index)
+        {
+            if (comboBox1.Items.Count == 1)
+            {
+                toFirstBtn.Enabled = false;
+                previousBtn.Enabled = false;
+                lastBtn.Enabled = false;
+                nextBtn.Enabled = false;
+            }
+            else if (index == 0)
+            {
+                toFirstBtn.Enabled = false;
+                previousBtn.Enabled = false;
+                lastBtn.Enabled = true;
+                nextBtn.Enabled = true;
+
+            }
+            else if (index == comboBox1.Items.Count - 1)
+            {
+                lastBtn.Enabled = false;
+                nextBtn.Enabled = false;
+                toFirstBtn.Enabled = true;
+                previousBtn.Enabled = true;
+            }
+            else
+            {
+                lastBtn.Enabled = true;
+                nextBtn.Enabled = true;
+                toFirstBtn.Enabled = true;
+                previousBtn.Enabled = true;
             }
         }
 
@@ -95,12 +129,9 @@ namespace WindowsFormsApplication1
                 nationTxt.Text = spieler.Nation;
                 internationalTxt.Text = spieler.International;
                 image.Image = Image.FromFile(@"Images\" + spieler.Name + " " + spieler.Vorname + ".jpg");
+                ChangeButtonEnabled(comboBox1.SelectedIndex);
                 Application.DoEvents();
-                if(comboBox1.SelectedIndex == 0)
-                {
-                    toFirstBtn.Enabled = false;
-                    previousBtn.Enabled = false;
-                }
+                
 
             }
         }
@@ -112,66 +143,34 @@ namespace WindowsFormsApplication1
         private void toFirstBtn_Click(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 0;
-            toFirstBtn.Enabled = false;
-            previousBtn.Enabled = false;
-            lastBtn.Enabled = true;
-            nextBtn.Enabled = true;
+            ChangeButtonEnabled(comboBox1.SelectedIndex);
             Application.DoEvents();
             
         }
         private void previousBtn_Click(object sender, EventArgs e)
         {
-            int index = comboBox1.SelectedIndex;
-            if (index == 0)
+            if (comboBox1.SelectedIndex > 0)
             {
-                toFirstBtn.Enabled = false;
-                previousBtn.Enabled = false;
-                Application.DoEvents();
+                comboBox1.SelectedIndex -= 1;
             }
-            else
-            {
-                lastBtn.Enabled = true;
-                nextBtn.Enabled = true;
-                index = index - 1;
-                comboBox1.SelectedIndex = index;
-                Application.DoEvents();
-            }
-            
+            ChangeButtonEnabled(comboBox1.SelectedIndex);
+            Application.DoEvents();
         }
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
-            int index = comboBox1.SelectedIndex;
-            if (index == 25)
+            if (comboBox1.SelectedIndex < comboBox1.Items.Count - 1)
             {
-                nextBtn.Enabled = false;
-                lastBtn.Enabled = false;
-                toFirstBtn.Enabled = true;
-                previousBtn.Enabled = true;
-                index = index + 1;
-                comboBox1.SelectedIndex = index;
-                Application.DoEvents();
+                comboBox1.SelectedIndex += 1;
             }
-            else
-            {
-                nextBtn.Enabled = true;
-                lastBtn.Enabled = true;
-                toFirstBtn.Enabled = true;
-                previousBtn.Enabled = true;
-                index = index + 1;
-                comboBox1.SelectedIndex = index;
-                Application.DoEvents();
-            }
-            
+            ChangeButtonEnabled(comboBox1.SelectedIndex);
+            Application.DoEvents();
         }
 
         private void lastBtn_Click(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex =26;
-            toFirstBtn.Enabled = true;
-            previousBtn.Enabled = true;
-            lastBtn.Enabled = false;
-            nextBtn.Enabled = false;
+            comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
+            ChangeButtonEnabled(comboBox1.SelectedIndex);
             Application.DoEvents();
         }
     }
