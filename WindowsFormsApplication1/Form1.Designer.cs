@@ -225,6 +225,8 @@
             this.nameTxt.Size = new System.Drawing.Size(233, 20);
             this.nameTxt.TabIndex = 16;
             this.nameTxt.TextChanged += new System.EventHandler(this.nameTxt_TextChanged);
+            this.nameTxt.ReadOnly = true;
+            this.nameTxt.Enabled = false;
             // 
             // internationalTxt
             // 
@@ -232,6 +234,7 @@
             this.internationalTxt.Name = "internationalTxt";
             this.internationalTxt.Size = new System.Drawing.Size(233, 20);
             this.internationalTxt.TabIndex = 18;
+            this.internationalTxt.Enabled = false;
             // 
             // nationTxt
             // 
@@ -239,6 +242,7 @@
             this.nationTxt.Name = "nationTxt";
             this.nationTxt.Size = new System.Drawing.Size(233, 20);
             this.nationTxt.TabIndex = 19;
+            this.nationTxt.Enabled = false;
             // 
             // gamesGoalsTxt
             // 
@@ -246,6 +250,7 @@
             this.gamesGoalsTxt.Name = "gamesGoalsTxt";
             this.gamesGoalsTxt.Size = new System.Drawing.Size(233, 20);
             this.gamesGoalsTxt.TabIndex = 20;
+            this.gamesGoalsTxt.Enabled = false;
             // 
             // weightTxt
             // 
@@ -253,6 +258,7 @@
             this.weightTxt.Name = "weightTxt";
             this.weightTxt.Size = new System.Drawing.Size(233, 20);
             this.weightTxt.TabIndex = 21;
+            this.weightTxt.Enabled = false;
             // 
             // sizeTxt
             // 
@@ -260,6 +266,7 @@
             this.sizeTxt.Name = "sizeTxt";
             this.sizeTxt.Size = new System.Drawing.Size(233, 20);
             this.sizeTxt.TabIndex = 22;
+            this.sizeTxt.Enabled = false;
             // 
             // bornTxt
             // 
@@ -267,6 +274,7 @@
             this.bornTxt.Name = "bornTxt";
             this.bornTxt.Size = new System.Drawing.Size(233, 20);
             this.bornTxt.TabIndex = 23;
+            this.bornTxt.Enabled = false;
             // 
             // sinceTxt
             // 
@@ -274,6 +282,7 @@
             this.sinceTxt.Name = "sinceTxt";
             this.sinceTxt.Size = new System.Drawing.Size(233, 20);
             this.sinceTxt.TabIndex = 24;
+            this.sinceTxt.Enabled = false;
             // 
             // nummerTxt
             // 
@@ -281,6 +290,7 @@
             this.nummerTxt.Name = "nummerTxt";
             this.nummerTxt.Size = new System.Drawing.Size(233, 20);
             this.nummerTxt.TabIndex = 25;
+            this.nummerTxt.Enabled = false;
             // 
             // positionTxt
             // 
@@ -288,6 +298,7 @@
             this.positionTxt.Name = "positionTxt";
             this.positionTxt.Size = new System.Drawing.Size(233, 20);
             this.positionTxt.TabIndex = 26;
+            this.positionTxt.Enabled = false;
             // 
             // vornameTxt
             // 
@@ -295,6 +306,7 @@
             this.vornameTxt.Name = "vornameTxt";
             this.vornameTxt.Size = new System.Drawing.Size(233, 20);
             this.vornameTxt.TabIndex = 27;
+            this.vornameTxt.Enabled = false;
             // 
             // image
             // 
