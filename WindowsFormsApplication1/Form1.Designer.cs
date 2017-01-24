@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApplication1
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
 {
     partial class Form1
     {
@@ -316,6 +318,7 @@
             this.image.Size = new System.Drawing.Size(330, 395);
             this.image.TabIndex = 28;
             this.image.TabStop = false;
+            this.image.SizeMode = PictureBoxSizeMode.Zoom;
             // 
             // Form1
             // 

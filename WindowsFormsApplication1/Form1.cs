@@ -19,6 +19,9 @@ namespace WindowsFormsApplication1
             LoadSpielerData();
             comboBox1.SelectedIndex = 0;
             ChangeButtonEnabled(comboBox1.SelectedIndex);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
         private void LoadSpielerData()
         {
