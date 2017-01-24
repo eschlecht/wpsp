@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        Kader myKader;
+
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace WindowsFormsApplication1
         }
         private void LoadSpielerData()
         {
+            myKader = new Kader();
             XmlDocument doc = new XmlDocument();
             doc.Load("SpielerData.xml");
             foreach (XmlNode node in doc.DocumentElement)
@@ -46,11 +49,14 @@ namespace WindowsFormsApplication1
                     string goals = childNode["ToreInBundesliga"].InnerText;
                     string nation = childNode["Nation"].InnerText;
                     string internationl = childNode["Laenderspiele"].InnerText;
-                    comboBox1.Items.Add(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
-
+                    myKader.AddToList(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
                 }
 
 
+            }
+            for (int i = 0; i < myKader.count; i++)
+            {
+                comboBox1.Items.Add(myKader.getSpieler(i));
             }
         }
 
@@ -118,7 +124,7 @@ namespace WindowsFormsApplication1
         {
             if (comboBox1.SelectedIndex != -1)
             {
-                Spieler spieler = comboBox1.SelectedItem as Spieler;
+                Spieler spieler = this.myKader.getSpieler(comboBox1.SelectedIndex);
                 nameTxt.Text = spieler.Name;
                 nameTxt.IsAccessible = false;
                 vornameTxt.Text = spieler.Vorname;
@@ -131,7 +137,14 @@ namespace WindowsFormsApplication1
                 gamesGoalsTxt.Text = spieler.Games + "/" + spieler.Goals;
                 nationTxt.Text = spieler.Nation;
                 internationalTxt.Text = spieler.International;
-                image.Image = Image.FromFile(@"Images\" + spieler.Name + " " + spieler.Vorname + ".jpg");
+                try
+                {
+                    image.Image = Image.FromFile(@"Images\" + spieler.Name + " " + spieler.Vorname + ".jpg");
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    image.Image = Image.FromFile(@"Images\notfound.jpg");
+                }
                 ChangeButtonEnabled(comboBox1.SelectedIndex);
                 Application.DoEvents();
                 
