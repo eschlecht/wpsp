@@ -29,30 +29,33 @@ namespace WindowsFormsApplication1
         {
             myKader = new Kader();
             XmlDocument doc = new XmlDocument();
-            doc.Load("SpielerData.xml");
-            foreach (XmlNode node in doc.DocumentElement)
+            try
             {
-                string spieler = node["Spieler"].InnerText;
-
-                foreach (XmlNode childNode in node.ChildNodes)
+                doc.Load("SpielerData.xml");
+                foreach (XmlNode node in doc.DocumentElement)
                 {
-
-                    string name = childNode["Name"].InnerText;
-                    string vorname = childNode["Vorname"].InnerText;
-                    string position = childNode["Position"].InnerText;
-                    int nummer = int.Parse(childNode["Rueckennummer"].InnerText);
-                    string seit = childNode["Seit"].InnerText;
-                    string bday = childNode["GeburtsDatum"].InnerText;
-                    int size = int.Parse(childNode["GroesseInCm"].InnerText);
-                    int weight = int.Parse(childNode["GewichtInKg"].InnerText);
-                    string games = childNode["SpieleInBundesliga"].InnerText;
-                    string goals = childNode["ToreInBundesliga"].InnerText;
-                    string nation = childNode["Nation"].InnerText;
-                    string internationl = childNode["Laenderspiele"].InnerText;
-                    myKader.AddToList(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
+                    string spieler = node["Spieler"].InnerText;
+                    foreach (XmlNode childNode in node.ChildNodes)
+                    {
+                        string name = childNode["Name"].InnerText;
+                        string vorname = childNode["Vorname"].InnerText;
+                        string position = childNode["Position"].InnerText;
+                        int nummer = int.Parse(childNode["Rueckennummer"].InnerText);
+                        string seit = childNode["Seit"].InnerText;
+                        string bday = childNode["GeburtsDatum"].InnerText;
+                        int size = int.Parse(childNode["GroesseInCm"].InnerText);
+                        int weight = int.Parse(childNode["GewichtInKg"].InnerText);
+                        string games = childNode["SpieleInBundesliga"].InnerText;
+                        string goals = childNode["ToreInBundesliga"].InnerText;
+                        string nation = childNode["Nation"].InnerText;
+                        string internationl = childNode["Laenderspiele"].InnerText;
+                        myKader.AddToList(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
+                    }
                 }
-
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("XML konnte nicht komplett gelesen werden. " + myKader.count + " Einträge hinzugefügt.", "XML-Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             for (int i = 0; i < myKader.count; i++)
             {
