@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
         Kader myKader;
-
         public Form1()
         {
             InitializeComponent();
@@ -25,41 +26,27 @@ namespace WindowsFormsApplication1
             this.MaximizeBox = false;
             this.MinimizeBox = false;
         }
+
         private void LoadSpielerData()
         {
-            myKader = new Kader();
-            XmlDocument doc = new XmlDocument();
             try
             {
-                doc.Load("SpielerData.xml");
-                foreach (XmlNode node in doc.DocumentElement)
-                {
-                    string spieler = node["Spieler"].InnerText;
-                    foreach (XmlNode childNode in node.ChildNodes)
-                    {
-                        string name = childNode["Name"].InnerText;
-                        string vorname = childNode["Vorname"].InnerText;
-                        string position = childNode["Position"].InnerText;
-                        int nummer = int.Parse(childNode["Rueckennummer"].InnerText);
-                        string seit = childNode["Seit"].InnerText;
-                        string bday = childNode["GeburtsDatum"].InnerText;
-                        int size = int.Parse(childNode["GroesseInCm"].InnerText);
-                        int weight = int.Parse(childNode["GewichtInKg"].InnerText);
-                        string games = childNode["SpieleInBundesliga"].InnerText;
-                        string goals = childNode["ToreInBundesliga"].InnerText;
-                        string nation = childNode["Nation"].InnerText;
-                        string internationl = childNode["Laenderspiele"].InnerText;
-                        myKader.AddToList(new Spieler(name, vorname, position, nummer, seit, bday, size, weight, games, goals, nation, internationl));
-                    }
-                }
+                XmlSerializer serializer = new XmlSerializer(typeof(Kader));
+                FileStream fs = new FileStream("SpielerData.xml", FileMode.Open);
+                XmlReader reader = XmlReader.Create(fs);
+                myKader = (Kader)serializer.Deserialize(reader);
+                fs.Close();
             }
-            catch (Exception)
+            catch (System.InvalidOperationException ex)
             {
-                MessageBox.Show("XML konnte nicht komplett gelesen werden. " + myKader.count + " Einträge hinzugefügt.", "XML-Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.Write(ex.Message);
+                MessageBox.Show("XML konnte nicht komplett gelesen werden. ", "XML-Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            for (int i = 0; i < myKader.count; i++)
+            
+            foreach (Spieler s in myKader.Spielers)
             {
-                comboBox1.Items.Add(myKader.getSpieler(i));
+                comboBox1.Items.Add(s);
             }
         }
 
@@ -127,31 +114,37 @@ namespace WindowsFormsApplication1
         {
             if (comboBox1.SelectedIndex != -1)
             {
-                Spieler spieler = this.myKader.getSpieler(comboBox1.SelectedIndex);
+                Spieler spieler = myKader.Spielers[comboBox1.SelectedIndex];
                 nameTxt.Text = spieler.Name;
                 nameTxt.IsAccessible = false;
                 vornameTxt.Text = spieler.Vorname;
                 positionTxt.Text = spieler.Position;
-                nummerTxt.Text = spieler.Nummer.ToString();
+                nummerTxt.Text = spieler.Rueckennummer.ToString();
                 sinceTxt.Text = spieler.Seit;
-                bornTxt.Text = spieler.Bday;
-                sizeTxt.Text = spieler.Size.ToString();
-                weightTxt.Text = spieler.Weight.ToString();
-                gamesGoalsTxt.Text = spieler.Games + "/" + spieler.Goals;
+                bornTxt.Text = spieler.GeburtsDatum;
+                sizeTxt.Text = spieler.GroesseInCm.ToString();
+                weightTxt.Text = spieler.GewichtInKg.ToString();
+                gamesGoalsTxt.Text = spieler.SpieleInBundesliga + "/" + spieler.ToreInBundesliga;
                 nationTxt.Text = spieler.Nation;
-                internationalTxt.Text = spieler.International;
+                internationalTxt.Text = spieler.Laenderspiele;
                 try
                 {
                     image.Image = Image.FromFile(@"Images\" + spieler.Name + " " + spieler.Vorname + ".jpg");
                 }
                 catch (System.IO.FileNotFoundException)
                 {
-                    image.Image = Image.FromFile(@"Images\notfound.jpg");
+                    try
+                    {
+                        image.Image = Image.FromFile(@"Images\notfound.jpg");
+                    }
+                    catch (System.IO.FileNotFoundException)
+                    {
+                        MessageBox.Show("Stop removing pictures! ", "Error in OSI Layer 8", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
                 }
                 ChangeButtonEnabled(comboBox1.SelectedIndex);
                 Application.DoEvents();
-                
-
             }
         }
 

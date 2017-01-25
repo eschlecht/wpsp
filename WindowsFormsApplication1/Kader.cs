@@ -1,37 +1,19 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApplication1
 {
-    class Kader
+    [XmlRoot("Kader")]
+    public class Kader
     {
-        public int count = 0;
-        private List<Spieler> KaderCollection;
-
-        public Spieler getSpieler(int index)
-        {
-            if (0 <= index)
-            {
-                if (this.KaderCollection.Count > index)
-                {
-                    return this.KaderCollection[index];
-                }
-            }
-            return this.KaderCollection[0];
-        }
-
-        public Kader()
-        {
-            this.KaderCollection = new List<Spieler>();
-        }
-        public Boolean AddToList(Spieler spieler)
-        {
-            this.KaderCollection.Add(spieler);
-            count++;
-            return true;
-        }
+        [XmlArray("SpielerListe")]
+        [XmlArrayItem("Spieler", typeof(Spieler))]
+        public List<Spieler> Spielers { get; set; }
     }
 }

@@ -4,41 +4,50 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApplication1
 {
-    class Spieler
+    [XmlRoot("Spieler")]
+    public class Spieler
     {
-        public string Name { get; private set; }
-        public string Vorname { get; private set; }
-        public string Position { get; private set; }
-        public int Nummer { get; private set; }
-        public string Seit { get; private set; }
-        public string Bday { get; private set; }
-        public int Size { get; private set; }
-        public int Weight { get; private set; }
-        public string Games { get; private set; }
-        public string Goals { get; private set; }
-        public string Nation { get; private set; }
-        public string International { get; private set; }
+        [XmlElement("Name")]
+        public string Name { get; set; }
 
-        public Spieler(string name, string vorname, string position, int nummer, string seit, string bday, int size, int weight, string games,
-        string goals, string nation, string international)
-        {
-            Name = name;
-            Vorname = vorname;
-            Position = position;
-            Nummer = nummer;
-            Seit = seit;
-            Bday = bday;
-            Size = size;
-            Weight = weight;
-            Games = games;
-            Goals = goals;
-            Nation = nation;
-            International = international;
+        [XmlElement("Vorname")]
+        public string Vorname { get; set; }
 
-    }
+        [XmlElement("Position")]
+        public string Position { get; set; }
+
+        [XmlElement("Rueckennummer")]
+        public int Rueckennummer { get; set; }
+
+        [XmlElement("Seit")]
+        public string Seit { get; set; }
+
+        [XmlElement("GeburtsDatum")]
+        public string GeburtsDatum { get; set; }
+
+        [XmlElement("GroesseInCm")]
+        public int GroesseInCm { get; set; }
+
+        [XmlElement("GewichtInKg")]
+        public int GewichtInKg { get; set; }
+
+        [XmlElement("SpieleInBundesliga")]
+        public string SpieleInBundesliga { get; set; }
+
+        [XmlElement("ToreInBundesliga")]
+        public string ToreInBundesliga { get; set; }
+
+        [XmlElement("Nation")]
+        public string Nation { get; set; }
+
+        [XmlElement("Laenderspiele")]
+        public string Laenderspiele { get; set; }
+        
         public override string ToString()
         {
             return Name + "," + Vorname;
